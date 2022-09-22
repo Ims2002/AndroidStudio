@@ -19,7 +19,7 @@ public class WinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win);
         tv = findViewById(R.id.winStreak);
-        tv.setText("Win Streak: "+ MainActivity.wins);
+        tv.setText("Wins: "+ MainActivity.wins);
         clk = findViewById(R.id.backbt);
         clk.setOnClickListener(new View.OnClickListener() {
             @Override
