@@ -2,6 +2,7 @@ package com.ims.morelessgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     int numeroRandom;
     final int INTENTOSMAX = 3;
     int intentos = INTENTOSMAX;
+    static int wins;
+    static int loses;
 
     Button bt1;Button bt2;Button bt3;
     Button bt4;Button bt5;Button bt6;
@@ -44,9 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void intentoNumeros() {
         TextView tv1 = findViewById(R.id.tv1);
+        tv1.setText("Intentos Restantes: "+ intentos);
         for (int i = intentos; i>0; i--) {
-            tv1.setText("Intentos Restantes: "+ intentos);
-
             bt1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -163,6 +165,10 @@ public class MainActivity extends AppCompatActivity {
         intentos--;
         if (intentos!=0)
             intentoNumeros();
+        else {
+            loses++;
+            LoseActivity();
+        }
     }
 
     public void ToastMenor() {
@@ -170,12 +176,28 @@ public class MainActivity extends AppCompatActivity {
         intentos--;
         if (intentos!=0)
             intentoNumeros();
+        else {
+            loses++;
+            LoseActivity();
+        }
     }
 
     public void ToastWin() {
         Toast.makeText(MainActivity.this,"Has acertado!",Toast.LENGTH_SHORT).show();
         intentos = 0;
+        wins++;
+        WinActivity();
 
+    }
+
+    public void WinActivity() {
+        Intent intent = new Intent(this, WinActivity.class);
+        startActivity(intent);
+    }
+
+    public void LoseActivity() {
+        Intent intent = new Intent(this, LoseActivity.class);
+        startActivity(intent);
     }
 
 }
