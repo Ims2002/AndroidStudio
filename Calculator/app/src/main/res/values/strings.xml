@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="xbutton">Xbutton</string>
+    <string name="screen">screen</string>
+</resources>
