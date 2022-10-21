@@ -7,9 +7,6 @@ import android.util.Log;
 
 import com.ims.fragmentskul.parsers.ParserAlumno;
 import com.ims.fragmentskul.parsers.ParserCourse;
-import com.ims.fragmentskul.parsers.ParserNota;
-
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,22 +15,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int i = 0;
-
         Alumno[] alumnos;
         Asignatura[] asignaturas;
 
         ParserAlumno parserAlumno = new ParserAlumno();
         ParserCourse parserCourse = new ParserCourse();
 
-        alumnos = parserAlumno.parse(this, "alumnos_notas.json");
+        alumnos = parserAlumno.parse(this);
 
-        //asignaturas = parserCourse.parse(this, "asignaturas.json");
+        asignaturas = parserCourse.parse(this);
 
-        //Log.d(getClass().getSimpleName(), Arrays.toString(alumnos));
-        for(Alumno a: alumnos){
-            Log.d("TestAlumnos",a.getNia()+a.getName());
-        }
-        //Log.d("TestParser", asignaturas.toString());
+        /*for(Alumno a: alumnos){
+            Log.d("TestAlumnos",a.getNia()+"  "+a.getName()+"  "+a.getNotas().get(0).getMark());
+        }*/
     }
 }

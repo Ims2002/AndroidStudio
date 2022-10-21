@@ -1,5 +1,7 @@
 package com.ims.fragmentskul;
 
+import java.util.ArrayList;
+
 public class Alumno {
     private String nia;
     private String name;
@@ -7,9 +9,9 @@ public class Alumno {
     private String surname2;
     private String birthDate;
     private String email;
-    private Nota[] notas;
+    private ArrayList<Nota> notas;
 
-    public Alumno(String nia, String name, String surname1, String surname2, String birthDate, String email, Nota[] notas) {
+    public Alumno(String nia, String name, String surname1, String surname2, String birthDate, String email, ArrayList<Nota> notas) {
         this.nia = nia;
         this.name = name;
         this.surname1 = surname1;
@@ -18,6 +20,7 @@ public class Alumno {
         this.email = email;
         this.notas = notas;
     }
+
 
     public String getNia() {
         return nia;
@@ -43,7 +46,7 @@ public class Alumno {
         return email;
     }
 
-    public Nota[] getNotas() {
+    public ArrayList<Nota> getNotas() {
         return notas;
     }
 }

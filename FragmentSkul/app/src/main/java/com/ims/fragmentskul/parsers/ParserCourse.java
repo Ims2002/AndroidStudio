@@ -18,7 +18,7 @@ public class ParserCourse {
 
     InputStream coursesFile;
 
-    public Asignatura[] parse(Context context, String fileName) {
+    public Asignatura[] parse(Context context) {
         Asignatura[] datos = null;
         String json = null;
         String courseCode;
@@ -48,24 +48,5 @@ public class ParserCourse {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public String read(Context context, String fileName) throws IOException {
-        String jsonString;
-        try {
-            InputStream is = context.getAssets().open(fileName);
-
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            jsonString = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return jsonString;
-
     }
 }
