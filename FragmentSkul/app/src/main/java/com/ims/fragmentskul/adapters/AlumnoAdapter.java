@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ims.fragmentskul.Alumno;
 import com.ims.fragmentskul.Asignatura;
+import com.ims.fragmentskul.Libs.Lib;
 import com.ims.fragmentskul.R;
 
 import java.text.SimpleDateFormat;
@@ -71,36 +72,8 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
             tvSurname1.setText(alumno.getSurname1());
             tvSurname2.setText(alumno.getSurname2());
             tvEmail.setText(alumno.getEmail());
-            tvBirthDate.setText(calculoEdad(alumno.getBirthDate()));
+            tvBirthDate.setText(Lib.calculoEdad(alumno.getBirthDate()));
 
         }
-
-        public int calculoEdad(String fecha) {
-            Date fechaNac=null;
-            try {
-                /**Se puede cambiar la mascara por el formato de la fecha
-                 que se quiera recibir, por ejemplo año mes día "yyyy-MM-dd"
-                 en este caso es día mes año*/
-                fechaNac = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
-            } catch (Exception ex) {
-                System.out.println("Error:"+ex);
-            }
-            Calendar fechaNacimiento = Calendar.getInstance();
-            //Se crea un objeto con la fecha actual
-            Calendar fechaActual = Calendar.getInstance();
-            //Se asigna la fecha recibida a la fecha de nacimiento.
-            fechaNacimiento.setTime(fechaNac);
-            //Se restan la fecha actual y la fecha de nacimiento
-            int año = fechaActual.get(Calendar.YEAR)- fechaNacimiento.get(Calendar.YEAR);
-            int mes =fechaActual.get(Calendar.MONTH)- fechaNacimiento.get(Calendar.MONTH);
-            int dia = fechaActual.get(Calendar.DATE)- fechaNacimiento.get(Calendar.DATE);
-            //Se ajusta el año dependiendo el mes y el día
-            if(mes<0 || (mes==0 && dia<0)){
-                año--;
-            }
-            //Regresa la edad en base a la fecha de nacimiento
-            return año;
-        }
-
     }
 }
