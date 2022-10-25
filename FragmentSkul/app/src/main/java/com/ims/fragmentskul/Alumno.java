@@ -1,17 +1,18 @@
 package com.ims.fragmentskul;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Alumno {
+public class Alumno implements Serializable {
     private String nia;
     private String name;
     private String surname1;
     private String surname2;
     private String birthDate;
     private String email;
-    private ArrayList<Nota> notas;
+    private Nota[] notas;
 
-    public Alumno(String nia, String name, String surname1, String surname2, String birthDate, String email, ArrayList<Nota> notas) {
+    public Alumno(String nia, String name, String surname1, String surname2, String birthDate, String email, Nota[] notas) {
         this.nia = nia;
         this.name = name;
         this.surname1 = surname1;
@@ -46,7 +47,7 @@ public class Alumno {
         return email;
     }
 
-    public ArrayList<Nota> getNotas() {
+    public Nota[] getNotas() {
         return notas;
     }
 }

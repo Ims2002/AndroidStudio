@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class ParserAlumno {
 
     InputStream alumnosFile;
-    ArrayList<Nota> notas = null;
     Alumno[] datos = null;
 
     public Alumno[] parse(Context context) {
@@ -36,6 +35,7 @@ public class ParserAlumno {
         String codAsig;
         String mark;
         this.alumnosFile = context.getResources().openRawResource(R.raw.alumnos_notas);
+
 
         try {
 
@@ -60,47 +60,31 @@ public class ParserAlumno {
                 surname2 = userDetail.getString("apellido2");
                 birthDate = userDetail.getString("fechaNacimiento");
                 email = userDetail.getString("email");
-                Log.d("In parser","Simple date ended");
                 JSONArray arrayNotas = userDetail.getJSONArray("notas");
+                Nota[] notas = new Nota[arrayNotas.length()];
                 for(int j = 0;j<arrayNotas.length();j++) {
-                    notas = new ArrayList<>();
+                    //notas = new Nota[arrayNotas.length()];
                     JSONObject notaDetail = arrayNotas.getJSONObject(j);
 
                     mark = notaDetail.getString("calificacion");
                     codAsig = notaDetail.getString("codAsig");
-
-                    n = new Nota(mark,codAsig);
-
-                    notas.add(n);
+                    //Log.w("",codAsig+" "+mark);
+                    notas[j] = new Nota(mark,codAsig);
                 }
 
                 //notas = parserNota.parse(context, fileName);
 
                 datos[i] = new Alumno(String.valueOf(nia),name,surname1,surname2,birthDate,email,notas);
             }
-            return datos;
+            //return datos;
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
-        return null;
+        //Log.d("Adwadawdadasdawdasdawd",datos[0].getNotas()[0].getMark());
+        return datos;
     }
 
-    public String read(Context context, String fileName) throws IOException {
-        String jsonString;
-        try {
-            InputStream is = context.getAssets().open(fileName);
-
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            jsonString = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return jsonString;
-
+    public Alumno[] getDatos() {
+        return datos;
     }
 }

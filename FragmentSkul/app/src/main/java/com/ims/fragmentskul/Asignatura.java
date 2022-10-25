@@ -1,6 +1,8 @@
 package com.ims.fragmentskul;
 
-public class Asignatura {
+import java.io.Serializable;
+
+public class Asignatura implements Serializable {
 
     private final String courseCode;
     private final String courseName;
