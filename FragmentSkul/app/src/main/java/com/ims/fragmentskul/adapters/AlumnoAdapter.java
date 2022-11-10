@@ -1,5 +1,6 @@
 package com.ims.fragmentskul.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,12 @@ import com.ims.fragmentskul.R;
 public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoViewHolder> {
     private Alumno[] alumnos;
     private IClickListener listener;
+    private final Context context;
 
-    public AlumnoAdapter(IClickListener listener, Alumno[] alumnos) {
+    public AlumnoAdapter(Context context, IClickListener listener, Alumno[] alumnos) {
         this.alumnos = alumnos;
         this.listener = listener;
+        this.context = context;
     }
 
     @NonNull
@@ -27,7 +30,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
     public AlumnoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_alumno,
                 parent,false);
-        return new AlumnoViewHolder(itemView,listener);
+        return new AlumnoViewHolder(itemView,context,listener);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
 
     public static class AlumnoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        //private TextView tvNia;
+        private Context context;
         private TextView tvName;
         private TextView tvSurname1;
         private TextView tvSurname2;
@@ -52,8 +55,9 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
         private IClickListener listener;
 
 
-        public AlumnoViewHolder(@NonNull View itemView, IClickListener listener) {
+        public AlumnoViewHolder(@NonNull View itemView, Context context, IClickListener listener) {
             super(itemView);
+            this.context = context;
             tvName = itemView.findViewById(R.id.tvName);
             tvSurname1 = itemView.findViewById(R.id.tvSurname1);
             tvSurname2 = itemView.findViewById(R.id.tvSurname2);

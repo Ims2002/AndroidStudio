@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_hangman"
+        android:icon="@drawable/hangman_ico"
+        android:title="@string/hangman"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_tic_tac_toe"
+        android:icon="@drawable/tictactoe_ico"
+        android:title="@string/settings"
+        app:showAsAction="ifRoom"/>
+</menu>

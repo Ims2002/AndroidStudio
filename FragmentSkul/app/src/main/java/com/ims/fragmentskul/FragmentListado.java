@@ -1,5 +1,6 @@
 package com.ims.fragmentskul;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,6 +15,10 @@ import com.ims.fragmentskul.adapters.AlumnoAdapter;
 import com.ims.fragmentskul.parsers.ParserAlumno;
 
 public class FragmentListado extends Fragment {
+
+    public interface IOnAttachListener {
+        Alumno[] getAlumnos();
+    }
 
     private Alumno[] alumnos;
     private IClickListener listener;
@@ -32,17 +37,20 @@ public class FragmentListado extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ParserAlumno parse = new ParserAlumno();
-        alumnos = parse.parse(getContext());
-        RecyclerView lstListado = view.findViewById(R.id.rvMainAlumnos);
-        lstListado.setAdapter(new AlumnoAdapter(listener, alumnos));
-        lstListado.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+        AlumnoAdapter adapter = new AlumnoAdapter(getContext(),listener,alumnos);
+        RecyclerView rvListado = view.findViewById(R.id.rvMainAlumnos);
+        rvListado.setHasFixedSize(true);
+        rvListado.setAdapter(adapter);
+        rvListado.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
 
     }
 
-    public void setAlumnosListener(Alumno[] alumnos, IClickListener listener) {
-        this.alumnos = alumnos;
-        this.listener = listener;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        listener = (IClickListener) context;
+        IOnAttachListener attachListener = (IOnAttachListener) context;
+        alumnos = attachListener.getAlumnos();
     }
 
 }

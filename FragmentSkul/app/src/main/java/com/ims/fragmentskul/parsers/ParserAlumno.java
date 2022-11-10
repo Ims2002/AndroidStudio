@@ -22,7 +22,11 @@ public class ParserAlumno {
     InputStream alumnosFile;
     Alumno[] datos = null;
 
-    public Alumno[] parse(Context context) {
+    public ParserAlumno(Context c) {
+        this.alumnosFile = c.getResources().openRawResource(R.raw.alumnos_notas);
+    }
+
+    public Alumno[] parse() {
 
         String json = null;
         Nota n;
@@ -34,7 +38,6 @@ public class ParserAlumno {
         String email;
         String codAsig;
         String mark;
-        this.alumnosFile = context.getResources().openRawResource(R.raw.alumnos_notas);
 
 
         try {

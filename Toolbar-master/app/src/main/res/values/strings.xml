@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Toolbar</string>
+    <string name="greeting">Greeting</string>
+    <string name="settings">Configuration</string>
+    <string name="hide_bar">Hide bar</string>
+    <string name="show_bar">Show bar</string>
+    <string name="hello">Hello</string>
+</resources>

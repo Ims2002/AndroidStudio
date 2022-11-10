@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import java.util.Objects;
 
 public class DetalleActivity extends AppCompatActivity {
-    public static final String EXTRA_COURSE = "com.ims.fragments.EXTRA_COURSE";
+    /*public static final String EXTRA_COURSE = "com.ims.fragments.EXTRA_COURSE";
     public static final String EXTRA_ALUMNO = "com.ims.fragments.EXTRA_ALUMNO";
 
     public DetalleActivity() {
@@ -28,5 +28,5 @@ public class DetalleActivity extends AppCompatActivity {
                     .add(R.id.FrgDetalle,FragmentDetalle.class,bundle)
                     .commit();
         }
-    }
+    }*/
 }

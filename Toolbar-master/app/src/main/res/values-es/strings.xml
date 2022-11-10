@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Toolbar</string>
+    <string name="greeting">Saludo</string>
+    <string name="settings">Configuración</string>
+    <string name="hide_bar">Mostrar barra</string>
+    <string name="show_bar">Mostrar barra</string>
+    <string name="hello">Hola</string>
+</resources>

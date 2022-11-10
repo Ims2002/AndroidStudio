@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TwoGamesToolbar</string>
+    <string name="show_bar">Show Bar</string>
+    <string name="hide_bar">Hide Bar</string>
+    <string name="hello">Hello!</string>
+    <string name="settings">Settings</string>
+    <string name="greeting">Greetings</string>
+    <string name="hanged">Hanged</string>
+    <string name="hangman">Hang Man</string>
+</resources>
