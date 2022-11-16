@@ -10,6 +10,6 @@
     <item
         android:id="@+id/action_tic_tac_toe"
         android:icon="@drawable/tictactoe_ico"
-        android:title="@string/settings"
+        android:title="@string/tictactoe"
         app:showAsAction="ifRoom"/>
 </menu>

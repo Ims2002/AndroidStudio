@@ -7,4 +7,5 @@
     <string name="greeting">Greetings</string>
     <string name="hanged">Hanged</string>
     <string name="hangman">Hang Man</string>
+    <string name="tictactoe">Tic Tac Toe</string>
 </resources>

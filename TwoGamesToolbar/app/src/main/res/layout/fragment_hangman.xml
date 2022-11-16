@@ -6,22 +6,112 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivHangedMan"
         android:layout_width="209dp"
         android:layout_height="250dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/hangman_6" />
 
     <Button
-        android:id="@+id/tryLetter"
+        android:id="@+id/btTryLetter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginBottom="128dp"
-        android:text="try"
+        android:layout_marginBottom="56dp"
+        android:text="Intento"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="223dp"
+        android:text="Intentos Restantes:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsedLettersT" />
+
+    <TextView
+        android:id="@+id/tvUsedLetters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toEndOf="@+id/tvUsedLettersT"
+        app:layout_constraintTop_toBottomOf="@+id/ivHangedMan" />
+
+    <TextView
+        android:id="@+id/tvIntroduceLetter"
+        android:layout_width="177dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:text="Introduce una letra"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTries"
+        app:layout_constraintVertical_bias="0.295" />
+
+    <EditText
+        android:id="@+id/ptTriedLetter"
+        android:layout_width="93dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="119dp"
+        android:ems="10"
+        android:hint="letra"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/tvIntroduceLetter"
+        app:layout_constraintTop_toBottomOf="@+id/ivHangedMan" />
+
+    <TextView
+        android:id="@+id/tvWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvUsedLetters"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivHangedMan"
+        app:layout_constraintVertical_bias="0.352" />
+
+    <TextView
+        android:id="@+id/tvCurrentTries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="92dp"
+        android:text="6"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toEndOf="@+id/tvTries"
+        app:layout_constraintTop_toBottomOf="@+id/tvWord" />
+
+    <TextView
+        android:id="@+id/tvUsedLettersT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
+        android:text="Letras Usadas:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivHangedMan" />
 </androidx.constraintlayout.widget.ConstraintLayout>

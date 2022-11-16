@@ -1,0 +1,11 @@
+<cars>
+    <car carCode="FORD" carName="carCode" km="84000" fabricadoEn="Andorra la Vella"  />
+    <car carCode="FORD" carName="Fiesta" km="49755" fabricadoEn="Abu Dhabi"  />
+    <car carCode="RENAULT" carName="Megane" km="291216" fabricadoEn="Kabul"  />
+    <car carCode="TESLA" carName="Tourister" km="86754" fabricadoEn="Madrid"  />
+    <car carCode="RENAULT" carName="Clio" km="13254" fabricadoEn="The Valley"  />
+    <car carCode="FORD" carName="Focus" km="298692" fabricadoEn="Tirana"  />
+    <car carCode="TESLA" carName="EcoEd" km="29600" fabricadoEn="Yerevan"  />
+    <car carCode="FORD" carName="Escort" km="13161" fabricadoEn="Luanda"  />
+    <car carCode="RENAULT" carName="Canape" km="0" fabricadoEn="Berlín"  />
+</cars>

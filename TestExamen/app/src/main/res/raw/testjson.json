@@ -1,0 +1,56 @@
+[
+  {
+    "carCode": "FORD",
+    "carName": "Puma",
+    "km": "84000",
+    "fabricadoEn": "Andorra la Vella"
+  },
+  {
+    "carCode": "FORD",
+    "carName": "Fiesta",
+    "km": "49755",
+    "fabricadoEn": "Abu Dhabi"
+  },
+  {
+    "carCode": "RENAULT",
+    "carName": "Megane",
+    "km": "291216",
+    "fabricadoEn": "Kabul"
+  },
+  {
+    "carCode": "TESLA",
+    "carName": "Tourister",
+    "km": "86754",
+    "fabricadoEn": "Madrid"
+  },
+  {
+    "carCode": "RENAULT",
+    "carName": "Clio",
+    "km": "13254",
+    "fabricadoEn": "The Valley"
+  },
+  {
+    "carCode": "FORD",
+    "carName": "Focus",
+    "km": "298692",
+    "fabricadoEn": "Tirana"
+  },
+  {
+    "carCode": "TESLA",
+    "carName": "EcoEd",
+    "km": "29600",
+    "fabricadoEn": "Yerevan"
+  },
+  {
+    "carCode": "FORD",
+    "carName": "Escort",
+    "km": "13161",
+    "fabricadoEn": "Luanda"
+  },
+  {
+    "carCode": "RENAULT",
+    "carName": "Canape",
+    "km": "0",
+    "fabricadoEn": "Berlín"
+  }
+]
