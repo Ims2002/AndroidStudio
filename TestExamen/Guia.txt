@@ -1,0 +1,9 @@
+-Crear parser
+-Crear Interface
+-Crear Fragments
+-Crear Adapter
+-Crear Layouts
+-Crear MainActivity
+
+MODELO	VISTA	CONTROLADOR
+DATOS	FRG/MA	GESTIONDATA
