@@ -50,11 +50,12 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
         public CarViewHolder(@NonNull View itemView,Context context,IOnClickListener listener) {
             super(itemView);
+
             this.context = context;
             this.listener = listener;
 
-            tvCarCode = itemView.findViewById(R.id.tvFabricante);
-            tvCarName = itemView.findViewById(R.id.tvModelo);
+            tvCarCode = itemView.findViewById(R.id.tvCode);
+            tvCarName = itemView.findViewById(R.id.tvName);
             tvKm = itemView.findViewById(R.id.tvKm);
             tvFabricadoEn = itemView.findViewById(R.id.tvFabricadoEn);
 

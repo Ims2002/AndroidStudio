@@ -1,14 +1,21 @@
 package com.ims.testexamen;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 
 import com.ims.testexamen.parsers.CarParserJson;
-import com.ims.testexamen.parsers.CarParserXML;
 
 public class MainActivity extends AppCompatActivity implements FragmentListado.IOnAttachListener, FragmentDetalle.IOnAttachListener, IOnClickListener {
 
@@ -28,12 +35,65 @@ public class MainActivity extends AppCompatActivity implements FragmentListado.I
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //La toolbar esta implementada de modo que al hacer click en un item del listado se mantiene
+        //en el caso de querer cambiar los datos de los items de la toolbar, se cambiarian desde el
+        //main_menu.xml añadiendo items y aplicandoles funcionalidad en el metodo onOptionsItemSelected
+        Toolbar toolbar = findViewById(R.id.tbAppBar);
+        setSupportActionBar(toolbar);
+
+        Button btCompartir = findViewById(R.id.btShare);
+        btCompartir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                compartirApp();
+            }
+        });
+
+        Button bShowHide = findViewById(R.id.bShowHide);
+        bShowHide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActionBar actionBar = getSupportActionBar();
+                assert actionBar != null;
+                if(actionBar.isShowing()) {
+                    bShowHide.setText(R.string.show_bar);
+                    actionBar.hide();
+                } else {
+                    bShowHide.setText(R.string.hide_bar);
+                    actionBar.show();
+                }
+            }
+        });
+
+
+
         tablet = findViewById(R.id.frgDetalle)!=null;
         if (tablet) {
             FragmentManager manager = getSupportFragmentManager();
             fragmentDetalle = (FragmentDetalle) manager.findFragmentById(R.id.frgDetalle);
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Cambio switch por if para contentar a Google
+        int id = item.getItemId();
+        if(id == R.id.action_saluda) {
+            Toast.makeText(this, R.string.hello, Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_settings) {
+            Toast.makeText(this, R.string.settings, Toast.LENGTH_SHORT).show();
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
+    }
+
 
     private void cargarDatos() {
         CarParserJson json = new CarParserJson(this);
@@ -96,4 +156,20 @@ public class MainActivity extends AppCompatActivity implements FragmentListado.I
         super.onBackPressed();
         setTitle(R.string.app_name);
     }
+
+    private void compartirApp() {
+        try {
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_SUBJECT,getResources().getString(R.string.app_name));
+            String aux = "Descarga la app\n";
+            //aux = aux + "https://play.google.com/store/apps/details?id="+getBaseContext().getPackageName();
+            aux = aux+"https://play.google.com/store/apps/details?id=com.ims.testexamen";
+            i.putExtra(Intent.EXTRA_TEXT,aux);
+            startActivity(i);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

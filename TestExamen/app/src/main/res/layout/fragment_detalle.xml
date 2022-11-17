@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvFabricante"
+        android:id="@+id/tvCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -17,13 +17,13 @@
 
 
     <TextView
-        android:id="@+id/tvModelo"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text=""
-        app:layout_constraintStart_toEndOf="@+id/tvFabricante"
+        app:layout_constraintStart_toEndOf="@+id/tvCode"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_marginTop="16dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFabricante" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCode" />
 
     <TextView
         android:id="@+id/tvFabricadoEn"
@@ -44,6 +44,6 @@
         android:layout_marginTop="16dp"
         android:text=""
         app:layout_constraintStart_toEndOf="@+id/tvKm"
-        app:layout_constraintTop_toBottomOf="@+id/tvModelo" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

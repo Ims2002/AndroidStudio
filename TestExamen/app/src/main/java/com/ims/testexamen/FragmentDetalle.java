@@ -28,8 +28,8 @@ public class FragmentDetalle extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvCarCode = view.findViewById(R.id.tvFabricante);
-        tvCarName = view.findViewById(R.id.tvModelo);
+        tvCarCode = view.findViewById(R.id.tvCode);
+        tvCarName = view.findViewById(R.id.tvName);
         tvFabricadoEn = view.findViewById(R.id.tvFabricadoEn);
         tvKm = view.findViewById(R.id.tvKm);
         if(car!=null) {
