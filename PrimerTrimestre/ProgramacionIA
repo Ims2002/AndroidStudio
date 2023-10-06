@@ -1,0 +1,174 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Ims2002/AndroidStudio/blob/main/PrimerTrimestre/ProgramacionIA\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "TchwVcBzOw7A",
+        "outputId": "2ad78c3c-20b0-491e-93c1-0b271978805a",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz\n",
+            "11490434/11490434 [==============================] - 0s 0us/step\n"
+          ]
+        }
+      ],
+      "source": [
+        "from keras.datasets import mnist\n",
+        "from keras import models\n",
+        "from keras import layers\n",
+        "from tensorflow.keras.utils import to_categorical\n",
+        "\n",
+        "# Información de las librerias que cargas para entrenar y probar el modelo\n",
+        "(train_images, train_labels), (test_images, test_labels) = mnist.load_data()\n",
+        "\n",
+        "# Define el modelo\n",
+        "network = models.Sequential()\n",
+        "\n",
+        "# Añadimos una capa con 512 nodos + = x - = 0\n",
+        "network.add(layers.Dense(512, activation = 'relu', input_shape = (28*28,)))\n",
+        "\n",
+        "# Funcion para la salida de datos 10 nodos = 10 posibles valores [0-9]\n",
+        "network.add(layers.Dense(10, activation = 'softmax'))\n",
+        "\n",
+        "network.compile(optimizer = 'rmsprop', #optimiza el algoritmo que ajusta los sesgos para minimizar la pérdida\n",
+        "                loss = 'categorical_crossentropy', # Utilizada en problemas de clasificación - cada entrada solo puede tener una posible salida\n",
+        "                metrics = ['accuracy']) # Métrica utilizada para evaluar el rendimiento del modelo\n",
+        "\n",
+        "#¿Redimensiona imágenes y mide byn?\n",
+        "train_images = train_images.reshape((60000, 28*28))\n",
+        "train_images = train_images.astype('float32')/255\n",
+        "\n",
+        "test_images = test_images.reshape((10000, 28*28))\n",
+        "test_images = test_images.astype('float32')/255\n",
+        "\n",
+        "# Convierte los números enteros de las etiquetas en su representación \"One-Hot encoding\"\n",
+        "# Se usa para problemas de clasificación multiclase\n",
+        "# One-Hot encoding => es un método que nos permite usar grupos de bits para representar valores categóricos\n",
+        "train_labels = to_categorical(train_labels)\n",
+        "test_labels = to_categorical(test_labels)\n",
+        "\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "network.fit(train_images, train_labels, epochs = 10, batch_size = 128)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "g_0DFcVNREJr",
+        "outputId": "28ea3067-7119-4c30-8ccd-aae9a12367be"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Epoch 1/10\n",
+            "469/469 [==============================] - 6s 11ms/step - loss: 0.2628 - accuracy: 0.9238\n",
+            "Epoch 2/10\n",
+            "469/469 [==============================] - 4s 8ms/step - loss: 0.1079 - accuracy: 0.9683\n",
+            "Epoch 3/10\n",
+            "469/469 [==============================] - 4s 8ms/step - loss: 0.0707 - accuracy: 0.9784\n",
+            "Epoch 4/10\n",
+            "469/469 [==============================] - 5s 11ms/step - loss: 0.0508 - accuracy: 0.9850\n",
+            "Epoch 5/10\n",
+            "469/469 [==============================] - 4s 8ms/step - loss: 0.0386 - accuracy: 0.9889\n",
+            "Epoch 6/10\n",
+            "469/469 [==============================] - 4s 8ms/step - loss: 0.0291 - accuracy: 0.9911\n",
+            "Epoch 7/10\n",
+            "469/469 [==============================] - 5s 11ms/step - loss: 0.0221 - accuracy: 0.9937\n",
+            "Epoch 8/10\n",
+            "469/469 [==============================] - 4s 8ms/step - loss: 0.0167 - accuracy: 0.9953\n",
+            "Epoch 9/10\n",
+            "469/469 [==============================] - 4s 8ms/step - loss: 0.0128 - accuracy: 0.9968\n",
+            "Epoch 10/10\n",
+            "469/469 [==============================] - 5s 10ms/step - loss: 0.0099 - accuracy: 0.9974\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "<keras.src.callbacks.History at 0x7acb0b5be0e0>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "test_loss, test_acc = network.evaluate(test_images, test_labels)\n",
+        "print(\"test_acc: \", test_acc)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "wSGcTq6LRQfp",
+        "outputId": "26a726fa-6f62-4fc7-a965-b3fd4e992229"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "313/313 [==============================] - 1s 2ms/step - loss: 0.0647 - accuracy: 0.9823\n",
+            "test_acc:  0.9822999835014343\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "KCsNBzLxRuU1"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
